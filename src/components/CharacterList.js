@@ -8,8 +8,15 @@ class CharacterList extends Component {
   }
 
   render() {
+    console.log(this.props.characters)
     return <div>CharList</div>
   }
 }
 
-export default connect(null, { fetchCharacters })(CharacterList)
+const mapStateToProps = (state) => {
+  return {
+    characters: state.characters,
+  }
+}
+
+export default connect(mapStateToProps, { fetchCharacters })(CharacterList)

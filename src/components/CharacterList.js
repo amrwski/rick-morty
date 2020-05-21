@@ -9,7 +9,7 @@ class CharacterList extends Component {
     this.props.fetchCharacters()
   }
 
-  renderList() {
+  renderCharacterList() {
     const { characters, selectCharacter } = this.props
 
     return characters.map((char) => {
@@ -37,8 +37,7 @@ class CharacterList extends Component {
   }
 
   render() {
-    console.log(this.props.characters)
-    return <div className="ui relaxed divided list">{this.renderList()}</div>
+    return <div className="ui relaxed divided list">{this.renderCharacterList()}</div>
   }
 }
 

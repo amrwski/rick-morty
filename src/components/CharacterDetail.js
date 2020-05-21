@@ -7,7 +7,7 @@ const CharacterDetail = ({ character }) => {
   if (!character) {
     return null
   }
-  console.log(character)
+
   return (
     <div className="char-detail ui container">
       <div className="char-detail ui segment">
@@ -18,7 +18,9 @@ const CharacterDetail = ({ character }) => {
           <h2>{character.name}</h2>
           <div>Gender: {character.gender}</div>
           <div>Origin: {character.origin.name}</div>
-          <div>Episodes</div>
+          <NavLink to={`/${character.id}/episodes`}>
+            <div>Episodes</div>
+          </NavLink>
         </div>
         <NavLink to="/">
           <button className="ui basic button">Back </button>
@@ -27,10 +29,6 @@ const CharacterDetail = ({ character }) => {
     </div>
   )
 }
-
-/* <p>Gender: {character.gender} </p> */
-/* <p>Origin: {character.origin}</p> */
-/* <p>Episode: {character.episode}</p> */
 
 const mapStateToProps = (state) => {
   return { character: state.selectedCharacter }

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { NavLink } from "react-router-dom"
 import { fetchCharacters, selectCharacter } from "../actions"
 import "./CharacterList.css"
 
@@ -23,9 +24,11 @@ class CharacterList extends Component {
                 <p>Status: {char.status}</p>
                 <p>Date created: {char.created}</p>
               </div>
-              <button className="ui button primary" onClick={() => selectCharacter(char)}>
-                Details
-              </button>
+              <NavLink to={`/${char.id}`}>
+                <button className="ui basic button" onClick={() => selectCharacter(char)}>
+                  Details
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -34,7 +37,7 @@ class CharacterList extends Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.characters)
     return <div className="ui relaxed divided list">{this.renderList()}</div>
   }
 }

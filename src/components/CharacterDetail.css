@@ -1,0 +1,21 @@
+.char-detail.container {
+  height: 90vh;
+}
+
+.char-detail.segment {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.char-detail button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.info {
+  padding: 10%;
+  /* font-size: 2rem; */
+}

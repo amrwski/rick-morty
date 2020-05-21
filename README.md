@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+No extra linter was needed, as CRA already sets up a linter as part of the workflow.
 
 ## Available Scripts
 

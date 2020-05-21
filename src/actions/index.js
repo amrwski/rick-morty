@@ -5,3 +5,10 @@ export const fetchCharacters = () => async (dispatch) => {
 
   dispatch({ type: "FETCH_CHARACTERS", payload: response.data.results })
 }
+
+export const selectCharacter = (character) => {
+  return {
+    type: "CHARACTER_SELECTED",
+    payload: character,
+  }
+}

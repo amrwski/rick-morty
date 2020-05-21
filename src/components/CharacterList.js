@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { fetchCharacters } from "../actions"
+import { fetchCharacters, selectCharacter } from "../actions"
 import "./CharacterList.css"
 
 class CharacterList extends Component {
@@ -9,7 +9,7 @@ class CharacterList extends Component {
   }
 
   renderList() {
-    const { characters } = this.props
+    const { characters, selectCharacter } = this.props
 
     return characters.map((char) => {
       return (
@@ -23,6 +23,9 @@ class CharacterList extends Component {
                 <p>Status: {char.status}</p>
                 <p>Date created: {char.created}</p>
               </div>
+              <button className="ui button primary" onClick={() => selectCharacter(char)}>
+                Details
+              </button>
             </div>
           </div>
         </div>
@@ -31,7 +34,7 @@ class CharacterList extends Component {
   }
 
   render() {
-    console.log(this.props.characters)
+    console.log(this.props)
     return <div className="ui relaxed divided list">{this.renderList()}</div>
   }
 }
@@ -42,4 +45,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchCharacters })(CharacterList)
+export default connect(mapStateToProps, { fetchCharacters, selectCharacter })(CharacterList)

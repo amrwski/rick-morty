@@ -14,17 +14,22 @@ const CharacterDetail = ({ character }) => {
         <div className="avatar">
           <img className="ui image" src={character.image} alt="user avatar" />
         </div>
+
         <div className="info">
-          <h2>{character.name}</h2>
+          <div className="char-name">{character.name}</div>
           <div>Gender: {character.gender}</div>
           <div>Origin: {character.origin.name}</div>
-          <NavLink to={`/${character.id}/episodes`}>
-            <div>Episodes</div>
+          <div>
+            <NavLink to={`/${character.id}/episodes`}>
+              <button className="ui basic button">List of episodes</button>
+            </NavLink>
+          </div>
+        </div>
+        <div className="btn-container">
+          <NavLink to="/">
+            <button className="back ui basic button">Back </button>
           </NavLink>
         </div>
-        <NavLink to="/">
-          <button className="ui basic button">Back </button>
-        </NavLink>
       </div>
     </div>
   )

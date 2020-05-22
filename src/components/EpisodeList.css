@@ -1,0 +1,13 @@
+.ep-list.container {
+  padding: 10px;
+}
+
+.content {
+  margin: 0;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

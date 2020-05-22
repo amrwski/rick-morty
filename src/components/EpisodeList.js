@@ -19,13 +19,32 @@ class EpisodeList extends Component {
   renderEpisodeList() {
     const { character, episodes } = this.props
 
-    const arrayCheck = () =>
-      episodes.length > 1 ? episodes.map((ep) => <ul key={ep.id}>{ep.name}</ul>) : episodes.name
-
     return (
-      <div className="ep-list ui container">
-        <div className="ep-list ui segment">
-          <div className="list">{arrayCheck()}</div>
+      <div className="ep-list ui segment">
+        {episodes.length > 1 ? (
+          episodes.map((ep) => (
+            <div key={ep.id} className="ui celled list">
+              <div className="item">
+                <div className="content">
+                  <div className="header">{ep.episode}</div>
+                  <div>{ep.name}</div>
+                  <div>{ep.air_date}</div>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="ui celled list">
+            <div className="item">
+              <div className="content">
+                <div className="header">{episodes.episode}</div>
+                <div>{episodes.name}</div>
+                <div>{episodes.air_date}</div>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="btn-container">
           <NavLink to={`/${character.id}`}>
             <button className="ui basic button">Back</button>
           </NavLink>
@@ -33,6 +52,7 @@ class EpisodeList extends Component {
       </div>
     )
   }
+
   render() {
     return <div className="ui relaxed divided list">{this.renderEpisodeList()}</div>
   }

@@ -1,21 +1,18 @@
-.char-detail.container {
-  height: 90vh;
-}
-
-.char-detail.segment {
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-}
-
-.char-detail button {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translate(-50%);
-}
-
 .info {
+  display: flex;
   padding: 10%;
-  /* font-size: 2rem; */
+  flex-direction: column;
+}
+
+.info div {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  line-height: 2rem;
+}
+
+.char-name {
+  font-weight: 700;
+  font-size: x-large;
 }

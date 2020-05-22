@@ -17,8 +17,11 @@ body {
 
 .content {
   display: flex;
-  margin: auto 20px;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+.description {
+  margin: 0 20px;
 }

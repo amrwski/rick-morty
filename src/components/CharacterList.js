@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { fetchCharacters, selectCharacter } from "../actions"
+import Pagination from "./Pagination"
 import "./CharacterList.css"
 
 class CharacterList extends Component {
@@ -12,7 +13,11 @@ class CharacterList extends Component {
   renderCharacterList() {
     const { characters, selectCharacter } = this.props
 
-    return characters.map((char) => {
+    if (!characters.results) {
+      return null
+    }
+
+    return characters.results.map((char) => {
       return (
         <div className="ui segment" key={char.id}>
           <div className="item">
@@ -37,7 +42,12 @@ class CharacterList extends Component {
   }
 
   render() {
-    return <div className="ui relaxed divided list">{this.renderCharacterList()}</div>
+    return (
+      <div className="ui relaxed divided list">
+        {this.renderCharacterList()}
+        <Pagination />
+      </div>
+    )
   }
 }
 

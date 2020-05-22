@@ -1,9 +1,9 @@
 import rickAndMorty from "../apis/rickAndMorty"
 
-export const fetchCharacters = () => async (dispatch) => {
-  const response = await rickAndMorty.get("/character")
+export const fetchCharacters = (page) => async (dispatch) => {
+  const response = await rickAndMorty.get(`/character?page=${page}`)
 
-  dispatch({ type: "FETCH_CHARACTERS", payload: response.data.results })
+  dispatch({ type: "FETCH_CHARACTERS", payload: response.data })
 }
 
 export const fetchEpisodes = (episodeIds) => async (dispatch) => {

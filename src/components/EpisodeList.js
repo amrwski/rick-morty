@@ -8,9 +8,8 @@ class EpisodeList extends Component {
   appearsInEpisodes() {
     const extractedEpisodeId = /\d+/g
     const episodeArr = []
-    return this.props.character.episode.map((ep) =>
-      parseInt(episodeArr.push(...ep.match(extractedEpisodeId)))
-    )
+    this.props.character.episode.map((ep) => episodeArr.push(...ep.match(extractedEpisodeId)))
+    return episodeArr
   }
 
   componentDidMount() {
@@ -19,16 +18,14 @@ class EpisodeList extends Component {
 
   renderEpisodeList() {
     const { character, episodes } = this.props
-    console.log(episodes)
+
+    const arrayCheck = () =>
+      episodes.length > 1 ? episodes.map((ep) => <ul key={ep.id}>{ep.name}</ul>) : episodes.name
 
     return (
       <div className="ep-list ui container">
         <div className="ep-list ui segment">
-          <div className="list">
-            {episodes.map((ep) => (
-              <ul key={ep.id}>{ep.name}</ul>
-            ))}
-          </div>
+          <div className="list">{arrayCheck()}</div>
           <NavLink to={`/${character.id}`}>
             <button className="ui basic button">Back</button>
           </NavLink>

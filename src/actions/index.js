@@ -8,8 +8,18 @@ export const fetchCharacters = (page) => async (dispatch) => {
 export const filterCharacters = (term = "human") => async (dispatch) => {
   const response = await rickAndMorty.get(`/character?species=${term}`)
 
-  dispatch({ type: "FETCH_CHARACTERS", payload: response.data })
+  dispatch({ type: "FILTER_CHARACTERS", payload: response.data })
 }
+
+// export const fetchCharacters = (page, term) => async (dispatch) => {
+//   const speciesQuery = `?species=${term}`
+//   let response = await rickAndMorty.get(`/character?page=${page}`)
+//   if (term) {
+//     return (response = await rickAndMorty.get(`/character?page=${page}${speciesQuery}`))
+//   }
+
+//   dispatch({ type: "FETCH_CHARACTERS", payload: response.data })
+// }
 
 export const fetchEpisodes = (episodeIds) => async (dispatch) => {
   const response = await rickAndMorty.get(`/episode/${episodeIds}`)

@@ -1,0 +1,10 @@
+.radio-segment {
+  height: 38px;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+.radio-fields {
+  margin: 0 !important;
+}

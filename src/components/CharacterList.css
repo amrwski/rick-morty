@@ -25,3 +25,9 @@ body {
 .description {
   margin: 0 20px;
 }
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

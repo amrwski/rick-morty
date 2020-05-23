@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import { fetchCharacters } from "../actions"
 import Pagination from "./Pagination"
 import SpeciesSearch from "./SpeciesSearch"
+import StatusSelect from "./StatusSelect"
 import "./CharacterList.css"
 
 class CharacterList extends Component {
@@ -43,7 +44,10 @@ class CharacterList extends Component {
   render() {
     return (
       <div className="ui relaxed divided list">
-        <SpeciesSearch />
+        <div className="filters">
+          <SpeciesSearch />
+          <StatusSelect />
+        </div>
         {this.renderCharacterList()}
         <Pagination />
       </div>

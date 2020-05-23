@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { fetchCharacters, selectCharacter } from "../actions"
+import { fetchCharacters } from "../actions"
 import Pagination from "./Pagination"
-import FilterBySpecies from "./FilterBySpecies"
+// import FilterBySpecies from "./FilterBySpecies"
 import "./CharacterList.css"
 
 class CharacterList extends Component {
@@ -12,7 +12,7 @@ class CharacterList extends Component {
   }
 
   renderCharacterList() {
-    const { characters, selectCharacter } = this.props
+    const { characters } = this.props
 
     if (!characters.results) {
       return null
@@ -31,9 +31,7 @@ class CharacterList extends Component {
                 <p>Date created: {char.created}</p>
               </div>
               <NavLink to={`/${char.id}`}>
-                <button className="ui basic button" onClick={() => selectCharacter(char)}>
-                  Details
-                </button>
+                <button className="ui basic button">Details</button>
               </NavLink>
             </div>
           </div>
@@ -59,4 +57,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { fetchCharacters, selectCharacter })(CharacterList)
+export default connect(mapStateToProps, { fetchCharacters })(CharacterList)

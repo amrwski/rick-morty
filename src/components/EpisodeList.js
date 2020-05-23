@@ -7,9 +7,7 @@ import "./EpisodeList.css"
 class EpisodeList extends Component {
   appearsInEpisodes() {
     const extractedEpisodeId = /\d+/g
-    const episodeArr = []
-    this.props.character.episode.map((ep) => episodeArr.push(...ep.match(extractedEpisodeId)))
-    return episodeArr
+    return this.props.character.episode.map((ep) => ep.match(extractedEpisodeId))
   }
 
   componentDidMount() {
@@ -18,32 +16,21 @@ class EpisodeList extends Component {
 
   renderEpisodeList() {
     const { character, episodes } = this.props
+    const episodeList = Array.isArray(episodes) ? episodes : [episodes]
 
     return (
       <div className="ep-list ui segment">
-        {episodes.length > 1 ? (
-          episodes.map((ep) => (
-            <div key={ep.id} className="ui celled list">
-              <div className="item">
-                <div className="content">
-                  <div className="header">{ep.episode}</div>
-                  <div>{ep.name}</div>
-                  <div>{ep.air_date}</div>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className="ui celled list">
+        {episodeList.map((ep) => (
+          <div key={ep.id} className="ui celled list">
             <div className="item">
               <div className="content">
-                <div className="header">{episodes.episode}</div>
-                <div>{episodes.name}</div>
-                <div>{episodes.air_date}</div>
+                <div className="header">{ep.episode}</div>
+                <div>{ep.name}</div>
+                <div>{ep.air_date}</div>
               </div>
             </div>
           </div>
-        )}
+        ))}
         <div className="btn-container">
           <NavLink to={`/${character.id}`}>
             <button className="ui basic button">Back</button>

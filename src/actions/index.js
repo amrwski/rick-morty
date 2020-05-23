@@ -18,3 +18,10 @@ export const selectCharacter = (character) => {
     payload: character,
   }
 }
+
+export const searchSpecies = (term) => (dispatch) => {
+  dispatch({
+    type: "SEARCH_SPECIES",
+    payload: term,
+  })
+}

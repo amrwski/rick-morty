@@ -17,6 +17,7 @@ class CharacterDetail extends Component {
     if (!selectedCharacter) {
       return null
     }
+
     return (
       <div className="char-detail ui container">
         <div className="char-detail ui segment">

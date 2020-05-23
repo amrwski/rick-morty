@@ -14,7 +14,6 @@ const CharacterDetail = ({ character }) => {
         <div className="avatar">
           <img className="ui image" src={character.image} alt="user avatar" />
         </div>
-
         <div className="info">
           <div className="char-name">{character.name}</div>
           <div>Gender: {character.gender}</div>

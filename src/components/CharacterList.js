@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { fetchCharacters } from "../actions"
 import Pagination from "./Pagination"
-import FilterBySpecies from "./SpeciesSearch"
+import SpeciesSearch from "./SpeciesSearch"
 import "./CharacterList.css"
 
 class CharacterList extends Component {
@@ -43,7 +43,7 @@ class CharacterList extends Component {
   render() {
     return (
       <div className="ui relaxed divided list">
-        <FilterBySpecies />
+        <SpeciesSearch />
         {this.renderCharacterList()}
         <Pagination />
       </div>

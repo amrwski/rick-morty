@@ -5,6 +5,11 @@ export const fetchCharacters = (page) => async (dispatch) => {
 
   dispatch({ type: "FETCH_CHARACTERS", payload: response.data })
 }
+export const filterCharacters = (term = "human") => async (dispatch) => {
+  const response = await rickAndMorty.get(`/character?species=${term}`)
+
+  dispatch({ type: "FETCH_CHARACTERS", payload: response.data })
+}
 
 export const fetchEpisodes = (episodeIds) => async (dispatch) => {
   const response = await rickAndMorty.get(`/episode/${episodeIds}`)

@@ -1,13 +1,16 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { searchSpecies } from "../actions"
+import { searchSpecies, filterCharacters } from "../actions"
 
 class SpeciesSearch extends Component {
-  render() {
-    console.log(this.props.term)
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.filterCharacters(this.props.term)
+  }
 
+  render() {
     return (
-      <div>
+      <form onSubmit={this.handleSubmit}>
         <div className="ui icon input">
           <input
             type="text"
@@ -16,7 +19,7 @@ class SpeciesSearch extends Component {
           />
           <i className="circular search link icon"></i>
         </div>
-      </div>
+      </form>
     )
   }
 }
@@ -25,4 +28,4 @@ const mapStateToProps = (state) => {
   return { characters: state.characters.results, term: state.searchTerm.term }
 }
 
-export default connect(mapStateToProps, { searchSpecies })(SpeciesSearch)
+export default connect(mapStateToProps, { searchSpecies, filterCharacters })(SpeciesSearch)

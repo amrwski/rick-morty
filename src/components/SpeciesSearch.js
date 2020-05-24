@@ -17,7 +17,7 @@ class SpeciesSearch extends Component {
             placeholder="Search species..."
             onChange={(e) => this.props.searchSpecies(e.target.value)}
           />
-          <i className="circular search link icon"></i>
+          <i onClick={this.handleSubmit} className="circular search link icon"></i>
         </div>
       </form>
     )
@@ -25,7 +25,7 @@ class SpeciesSearch extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { characters: state.characters.results, term: state.searchTerm.term }
+  return { term: state.searchTerm.term }
 }
 
 export default connect(mapStateToProps, { searchSpecies, filterCharacters })(SpeciesSearch)

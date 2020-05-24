@@ -5,10 +5,16 @@ export const fetchCharacters = (page) => async (dispatch) => {
 
   dispatch({ type: "FETCH_CHARACTERS", payload: response.data })
 }
-export const filterCharacters = (term = "human") => async (dispatch) => {
+export const filterCharacters = (term) => async (dispatch) => {
   const response = await rickAndMorty.get(`/character?species=${term}`)
 
   dispatch({ type: "FILTER_CHARACTERS", payload: response.data })
+}
+
+export const filterStatus = (status) => async (dispatch) => {
+  const response = await rickAndMorty.get(`/character?status=${status}`)
+
+  dispatch({ type: "FILTER_STATUS", payload: response.data })
 }
 
 // export const fetchCharacters = (page, term) => async (dispatch) => {

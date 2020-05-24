@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { searchSpecies, filterCharacters } from "../actions"
+import { searchSpecies, filterSpecies } from "../actions"
 
 class SpeciesSearch extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.filterCharacters(this.props.term)
+    this.props.filterSpecies(this.props.term)
   }
 
   render() {
@@ -28,4 +28,4 @@ const mapStateToProps = (state) => {
   return { term: state.searchTerm.term }
 }
 
-export default connect(mapStateToProps, { searchSpecies, filterCharacters })(SpeciesSearch)
+export default connect(mapStateToProps, { searchSpecies, filterSpecies })(SpeciesSearch)

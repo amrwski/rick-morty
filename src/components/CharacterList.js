@@ -5,6 +5,8 @@ import { fetchCharacters } from "../actions"
 import Pagination from "./Pagination"
 import SpeciesSearch from "./SpeciesSearch"
 import StatusSelect from "./StatusSelect"
+import DateSelect from "./DateSelect"
+import { dateParser } from "../utils/dateParser"
 import "./CharacterList.css"
 
 class CharacterList extends Component {
@@ -29,7 +31,7 @@ class CharacterList extends Component {
                 <h3>{char.name}</h3>
                 <p>Species: {char.species}</p>
                 <p>Status: {char.status}</p>
-                <p>Date created: {char.created}</p>
+                <p>Date created: {dateParser(char.created)}</p>
               </div>
               <NavLink to={`/${char.id}`}>
                 <button className="ui basic button">Details</button>
@@ -47,6 +49,9 @@ class CharacterList extends Component {
         <div className="filters">
           <SpeciesSearch />
           <StatusSelect />
+        </div>
+        <div className="date-select">
+          <DateSelect />
         </div>
         {this.renderCharacterList()}
         <Pagination />

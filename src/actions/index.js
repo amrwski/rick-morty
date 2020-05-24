@@ -24,13 +24,10 @@ export const filterStatus = (status) => async (dispatch) => {
 //   let response
 //   if (term && !status) {
 //     response = await rickAndMorty.get(`/character?page=${page}${speciesQuery}`)
-//     console.log(response.data.results)
 //   } else if (!term && status) {
 //     response = await rickAndMorty.get(`/character?page=${page}${statusQuery}`)
-//     console.log(response.data.results)
 //   } else if (!term && !status) {
 //     response = await rickAndMorty.get(`/character?page=${page}`)
-//     console.log(response.data.results)
 //   }
 //   dispatch({ type: "FETCH_CHARACTERS", payload: response.data })
 // }
@@ -48,9 +45,16 @@ export const selectCharacter = (character) => {
   }
 }
 
-export const searchSpecies = (term) => (dispatch) => {
-  dispatch({
+export const searchSpecies = (term) => {
+  return {
     type: "SEARCH_SPECIES",
     payload: term,
-  })
+  }
+}
+
+export const filterByDate = (startDate, endDate) => {
+  return {
+    type: "FILTER_DATE",
+    payload: [startDate, endDate],
+  }
 }

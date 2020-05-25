@@ -3,11 +3,11 @@ import { connect } from "react-redux"
 import { searchSpecies, fetchCharacters } from "../actions"
 
 class SpeciesSearch extends Component {
-  handleChange = (value) => {
+  handleChange = (species) => {
     const { searchSpecies, fetchCharacters, status } = this.props
 
-    searchSpecies(value)
-    fetchCharacters(null, value, status)
+    searchSpecies(species)
+    fetchCharacters(null, species, status)
   }
 
   handleSubmit = (e) => {

@@ -3,20 +3,21 @@ import { connect } from "react-redux"
 import { fetchCharacters } from "../actions"
 
 const Pagination = ({ characters, fetchCharacters }) => {
+  const { info } = characters
   return (
     <>
-      {characters.info.prev && (
+      {info.prev && (
         <button
           className="ui inverted basic left floated button"
-          onClick={() => fetchCharacters(characters.info.prev.split("=").pop())}
+          onClick={() => fetchCharacters(info.prev.split("=").pop())}
         >
           Prev
         </button>
       )}
-      {characters.info.next && (
+      {info.next && (
         <button
           className="ui inverted basic right floated button"
-          onClick={() => fetchCharacters(characters.info.next.split("=").pop())}
+          onClick={() => fetchCharacters(info.next.split("=").pop())}
         >
           Next
         </button>

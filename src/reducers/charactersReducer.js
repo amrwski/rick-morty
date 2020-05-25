@@ -9,9 +9,6 @@ export default (
     case "FILTER_SPECIES":
     case "FILTER_STATUS":
       return action.payload
-    //   break
-    // case "FILTER_DATE":
-    //   return action.payload
     default:
       return state
   }

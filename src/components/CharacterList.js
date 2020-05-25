@@ -21,7 +21,7 @@ class CharacterList extends Component {
       return null
     }
 
-    return characters.results.map((char) => {
+    return characters.results.slice(0, 10).map((char) => {
       return (
         <div className="ui segment" key={char.id}>
           <div className="item">

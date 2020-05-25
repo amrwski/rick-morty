@@ -49,7 +49,8 @@ class StatusSelect extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { term: state.searchTerm.term, status: state.searchTerm.status }
+  const { term } = state.searchTerm
+  return { term }
 }
 
 export default connect(mapStateToProps, { fetchCharacters, searchStatus })(StatusSelect)

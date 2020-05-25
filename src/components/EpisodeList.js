@@ -1,21 +1,28 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { fetchEpisodes } from "../actions"
+import { fetchCharacter, fetchEpisodes } from "../actions"
 import "./EpisodeList.css"
 
 class EpisodeList extends Component {
-  appearsInEpisodes() {
-    const extractedEpisodeId = /\d+/g
-    return this.props.character.episode.map((ep) => ep.match(extractedEpisodeId))
+  componentDidMount() {
+    const { fetchCharacter, fetchEpisodes, match } = this.props
+
+    fetchCharacter(match.params.characterId)
+    fetchEpisodes(this.appearsInEpisodes())
   }
 
-  componentDidMount() {
-    this.props.fetchEpisodes(this.appearsInEpisodes())
+  appearsInEpisodes() {
+    const { character } = this.props
+    if (!character.episode) {
+      return null
+    }
+    const extractedEpisodeId = /\d+/g
+    return character.episode.map((ep) => ep.match(extractedEpisodeId))
   }
 
   renderEpisodeList() {
-    const { character, episodes } = this.props
+    const { episodes, match } = this.props
     const episodeList = Array.isArray(episodes) ? episodes : [episodes]
 
     return (
@@ -32,7 +39,7 @@ class EpisodeList extends Component {
           </div>
         ))}
         <div className="btn-container">
-          <NavLink to={`/${character.id}`}>
+          <NavLink to={`/${match.params.characterId}`}>
             <button className="ui basic button">Back</button>
           </NavLink>
         </div>
@@ -46,7 +53,7 @@ class EpisodeList extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { character: state.selectedCharacter, episodes: state.episodes }
+  return { character: state.character, episodes: state.episodes }
 }
 
-export default connect(mapStateToProps, { fetchEpisodes })(EpisodeList)
+export default connect(mapStateToProps, { fetchCharacter, fetchEpisodes })(EpisodeList)

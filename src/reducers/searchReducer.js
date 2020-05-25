@@ -5,6 +5,11 @@ export default (state = {}, action) => {
         ...state,
         term: action.payload,
       }
+    case "SEARCH_STATUS":
+      return {
+        ...state,
+        status: action.payload,
+      }
     default:
       return state
   }

@@ -1,11 +1,17 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { searchSpecies, filterSpecies } from "../actions"
+import { searchSpecies, fetchCharacters } from "../actions"
 
 class SpeciesSearch extends Component {
+  handleChange = (value) => {
+    const { searchSpecies, fetchCharacters, status } = this.props
+
+    searchSpecies(value)
+    fetchCharacters(null, value, status)
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.filterSpecies(this.props.term)
   }
 
   render() {
@@ -15,7 +21,7 @@ class SpeciesSearch extends Component {
           <input
             type="text"
             placeholder="Search species..."
-            onChange={(e) => this.props.searchSpecies(e.target.value)}
+            onChange={(e) => this.handleChange(e.target.value)}
           />
           <i onClick={this.handleSubmit} className="circular search link icon"></i>
         </div>
@@ -25,7 +31,8 @@ class SpeciesSearch extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { term: state.searchTerm.term }
+  const { term, status } = state.searchTerm
+  return { term, status }
 }
 
-export default connect(mapStateToProps, { searchSpecies, filterSpecies })(SpeciesSearch)
+export default connect(mapStateToProps, { searchSpecies, fetchCharacters })(SpeciesSearch)

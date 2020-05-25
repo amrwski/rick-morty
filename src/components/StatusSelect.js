@@ -1,11 +1,14 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { filterStatus } from "../actions"
+import { fetchCharacters, searchStatus } from "../actions"
 import "./StatusSelect.css"
 
 class StatusSelect extends Component {
   setStatus = (e) => {
-    this.props.filterStatus(e.target.value)
+    const { searchStatus, fetchCharacters, term } = this.props
+
+    searchStatus(e.target.value)
+    fetchCharacters(null, term, e.target.value)
   }
 
   render() {
@@ -45,4 +48,8 @@ class StatusSelect extends Component {
   }
 }
 
-export default connect(null, { filterStatus })(StatusSelect)
+const mapStateToProps = (state) => {
+  return { term: state.searchTerm.term, status: state.searchTerm.status }
+}
+
+export default connect(mapStateToProps, { fetchCharacters, searchStatus })(StatusSelect)
